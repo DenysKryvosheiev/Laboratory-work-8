@@ -10,17 +10,17 @@ const queryClient = new QueryClient();
 type AppProps = { router: TanstackRouter };
 
 const App = ({ router }: AppProps): FunctionComponent => {
-	return (
-		<QueryClientProvider client={queryClient}>
-			<RouterProvider router={router} />
-			<TanStackRouterDevelopmentTools
-				initialIsOpen={false}
-				position="bottom-left"
-				router={router}
-			/>
-			<ReactQueryDevtools initialIsOpen={false} position="bottom" />
-		</QueryClientProvider>
-	);
+    return (
+        <QueryClientProvider client={queryClient}>
+            <RouterProvider router={router} />
+            <TanStackRouterDevelopmentTools
+                initialIsOpen={false}
+                position="bottom-left"
+                router={router}
+            />
+            <ReactQueryDevtools initialIsOpen={false} position="bottom" />
+        </QueryClientProvider>
+    );
 };
 
 export default App;

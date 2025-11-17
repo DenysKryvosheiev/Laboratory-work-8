@@ -10,33 +10,154 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as StudentsIndexRouteImport } from './routes/students/index'
+import { Route as RoomsIndexRouteImport } from './routes/rooms/index'
+import { Route as HistoryIndexRouteImport } from './routes/history/index'
+import { Route as StudentsNewRouteImport } from './routes/students/new'
+import { Route as StudentsStudentIdRouteImport } from './routes/students/$studentId'
+import { Route as RoomsNewRouteImport } from './routes/rooms/new'
+import { Route as RoomsRoomNumberRouteImport } from './routes/rooms/$roomNumber'
+import { Route as HistoryNewRouteImport } from './routes/history/new'
+import { Route as HistoryHistoryIdRouteImport } from './routes/history/$historyId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StudentsIndexRoute = StudentsIndexRouteImport.update({
+  id: '/students/',
+  path: '/students/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RoomsIndexRoute = RoomsIndexRouteImport.update({
+  id: '/rooms/',
+  path: '/rooms/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HistoryIndexRoute = HistoryIndexRouteImport.update({
+  id: '/history/',
+  path: '/history/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudentsNewRoute = StudentsNewRouteImport.update({
+  id: '/students/new',
+  path: '/students/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudentsStudentIdRoute = StudentsStudentIdRouteImport.update({
+  id: '/students/$studentId',
+  path: '/students/$studentId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RoomsNewRoute = RoomsNewRouteImport.update({
+  id: '/rooms/new',
+  path: '/rooms/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RoomsRoomNumberRoute = RoomsRoomNumberRouteImport.update({
+  id: '/rooms/$roomNumber',
+  path: '/rooms/$roomNumber',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HistoryNewRoute = HistoryNewRouteImport.update({
+  id: '/history/new',
+  path: '/history/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HistoryHistoryIdRoute = HistoryHistoryIdRouteImport.update({
+  id: '/history/$historyId',
+  path: '/history/$historyId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/history/$historyId': typeof HistoryHistoryIdRoute
+  '/history/new': typeof HistoryNewRoute
+  '/rooms/$roomNumber': typeof RoomsRoomNumberRoute
+  '/rooms/new': typeof RoomsNewRoute
+  '/students/$studentId': typeof StudentsStudentIdRoute
+  '/students/new': typeof StudentsNewRoute
+  '/history': typeof HistoryIndexRoute
+  '/rooms': typeof RoomsIndexRoute
+  '/students': typeof StudentsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/history/$historyId': typeof HistoryHistoryIdRoute
+  '/history/new': typeof HistoryNewRoute
+  '/rooms/$roomNumber': typeof RoomsRoomNumberRoute
+  '/rooms/new': typeof RoomsNewRoute
+  '/students/$studentId': typeof StudentsStudentIdRoute
+  '/students/new': typeof StudentsNewRoute
+  '/history': typeof HistoryIndexRoute
+  '/rooms': typeof RoomsIndexRoute
+  '/students': typeof StudentsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/history/$historyId': typeof HistoryHistoryIdRoute
+  '/history/new': typeof HistoryNewRoute
+  '/rooms/$roomNumber': typeof RoomsRoomNumberRoute
+  '/rooms/new': typeof RoomsNewRoute
+  '/students/$studentId': typeof StudentsStudentIdRoute
+  '/students/new': typeof StudentsNewRoute
+  '/history/': typeof HistoryIndexRoute
+  '/rooms/': typeof RoomsIndexRoute
+  '/students/': typeof StudentsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/history/$historyId'
+    | '/history/new'
+    | '/rooms/$roomNumber'
+    | '/rooms/new'
+    | '/students/$studentId'
+    | '/students/new'
+    | '/history'
+    | '/rooms'
+    | '/students'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/history/$historyId'
+    | '/history/new'
+    | '/rooms/$roomNumber'
+    | '/rooms/new'
+    | '/students/$studentId'
+    | '/students/new'
+    | '/history'
+    | '/rooms'
+    | '/students'
+  id:
+    | '__root__'
+    | '/'
+    | '/history/$historyId'
+    | '/history/new'
+    | '/rooms/$roomNumber'
+    | '/rooms/new'
+    | '/students/$studentId'
+    | '/students/new'
+    | '/history/'
+    | '/rooms/'
+    | '/students/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  HistoryHistoryIdRoute: typeof HistoryHistoryIdRoute
+  HistoryNewRoute: typeof HistoryNewRoute
+  RoomsRoomNumberRoute: typeof RoomsRoomNumberRoute
+  RoomsNewRoute: typeof RoomsNewRoute
+  StudentsStudentIdRoute: typeof StudentsStudentIdRoute
+  StudentsNewRoute: typeof StudentsNewRoute
+  HistoryIndexRoute: typeof HistoryIndexRoute
+  RoomsIndexRoute: typeof RoomsIndexRoute
+  StudentsIndexRoute: typeof StudentsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +169,83 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/students/': {
+      id: '/students/'
+      path: '/students'
+      fullPath: '/students'
+      preLoaderRoute: typeof StudentsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rooms/': {
+      id: '/rooms/'
+      path: '/rooms'
+      fullPath: '/rooms'
+      preLoaderRoute: typeof RoomsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/history/': {
+      id: '/history/'
+      path: '/history'
+      fullPath: '/history'
+      preLoaderRoute: typeof HistoryIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/students/new': {
+      id: '/students/new'
+      path: '/students/new'
+      fullPath: '/students/new'
+      preLoaderRoute: typeof StudentsNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/students/$studentId': {
+      id: '/students/$studentId'
+      path: '/students/$studentId'
+      fullPath: '/students/$studentId'
+      preLoaderRoute: typeof StudentsStudentIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rooms/new': {
+      id: '/rooms/new'
+      path: '/rooms/new'
+      fullPath: '/rooms/new'
+      preLoaderRoute: typeof RoomsNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rooms/$roomNumber': {
+      id: '/rooms/$roomNumber'
+      path: '/rooms/$roomNumber'
+      fullPath: '/rooms/$roomNumber'
+      preLoaderRoute: typeof RoomsRoomNumberRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/history/new': {
+      id: '/history/new'
+      path: '/history/new'
+      fullPath: '/history/new'
+      preLoaderRoute: typeof HistoryNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/history/$historyId': {
+      id: '/history/$historyId'
+      path: '/history/$historyId'
+      fullPath: '/history/$historyId'
+      preLoaderRoute: typeof HistoryHistoryIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  HistoryHistoryIdRoute: HistoryHistoryIdRoute,
+  HistoryNewRoute: HistoryNewRoute,
+  RoomsRoomNumberRoute: RoomsRoomNumberRoute,
+  RoomsNewRoute: RoomsNewRoute,
+  StudentsStudentIdRoute: StudentsStudentIdRoute,
+  StudentsNewRoute: StudentsNewRoute,
+  HistoryIndexRoute: HistoryIndexRoute,
+  RoomsIndexRoute: RoomsIndexRoute,
+  StudentsIndexRoute: StudentsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
