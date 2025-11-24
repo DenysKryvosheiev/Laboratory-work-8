@@ -1,4 +1,4 @@
-name: Build and publish Docker image
+name: Build and Deploy to Azure
 
 permissions:
   contents: read
@@ -12,13 +12,12 @@ on:
       - 'feature/*'
 
 jobs:
-  build-and-push:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
       - name: Install pnpm, deps and build
         run: |
           npm install -g pnpm
@@ -38,3 +37,13 @@ jobs:
           context: .
           push: true
           tags: ghcr.io/denyskryvosheiev/laboratory-work-8:latest
+
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: "denis-app-service"
+          images: "ghcr.io/denyskryvosheiev/laboratory-work-8:latest"
