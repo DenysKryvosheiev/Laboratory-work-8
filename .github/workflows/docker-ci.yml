@@ -37,4 +37,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/denyskryvosheiev/laboratory-work-8:latest
+          tags: ghcr.io/denyskryvosheiev/dockerfile-docker-compose
